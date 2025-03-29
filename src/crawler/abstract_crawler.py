@@ -1,12 +1,14 @@
 from abc import ABC, abstractmethod
 
+from src.tools.redis import RedisClient
+
 
 class AbstractCrawler(ABC):
     """
     Abstract base class for web crawlers.
     """
     def __init__(self):
-        pass
+        self.redis = RedisClient.get()
 
     @abstractmethod
     def execute_main(self):
@@ -29,7 +31,8 @@ class AbstractCrawler(ABC):
         """
         pass
 
-    def get_step(self):
+    def get_step(self, key):
         """
         Get the current step of the crawler.
         """
+        return self.redis.get(key)
