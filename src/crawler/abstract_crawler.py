@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from loguru import logger
+
 from src.tools.redis import RedisClient
 
 
@@ -35,4 +37,15 @@ class AbstractCrawler(ABC):
         """
         Get the current step of the crawler.
         """
-        return self.redis.get(key)
+        steps = None
+        try:
+            steps = self.redis.get(key)
+        except Exception as e:
+            logger.error(f'Error collecting data from Redis: {e}')
+            return steps
+
+    def save_data(self, data):
+        try:
+            self.mongo.save_dataframe(data)
+        except Exception as e:
+            logger.error(f'Error saving to MongoDB: {e}')
