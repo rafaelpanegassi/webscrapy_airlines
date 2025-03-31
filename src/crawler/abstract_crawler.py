@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 
 from loguru import logger
 
+from src.tools.mongodb import MongoConnection
 from src.tools.redis import RedisClient
+from src.tools.browser_provider import BrowserProvider
 
 
 class AbstractCrawler(ABC):
@@ -11,6 +13,8 @@ class AbstractCrawler(ABC):
     """
     def __init__(self):
         self.redis = RedisClient.get()
+        self.mongo = MongoConnection()
+        self.browser = BrowserProvider()
 
     @abstractmethod
     def execute_main(self):

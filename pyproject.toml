@@ -12,6 +12,7 @@ flake8 = "^7.1.2"
 isort = "^6.0.1"
 pymongo = "^4.11.3"
 loguru = "^0.7.3"
+selenium = "^4.30.0"
 
 
 [build-system]
