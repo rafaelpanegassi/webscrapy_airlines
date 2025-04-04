@@ -19,11 +19,11 @@ class GenericCrawler(AbstractCrawler):
         if self.steps is None:
             logger.error('You need to configure crawler')
 
-    def start(self, origin, destiny, departure_time, return_date):
+    def start(self, origin, destiny, departure_date, return_date):
         self.input = {
             "origin": origin,
             "destiny": destiny,
-            "departure_time": departure_time,
+            "departure_date": departure_date,
             "return_date": return_date
         }
         self.execute_steps()
