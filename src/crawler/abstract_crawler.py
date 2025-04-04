@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 import pandas as pd
 from loguru import logger
 
@@ -37,11 +38,11 @@ class AbstractCrawler(ABC):
 
     def save_data(self, data):
         try:
-            # Converter lista em DataFrame do pandas, se já não for um DataFrame
             if not isinstance(data, pd.DataFrame):
-                logger.info(f"Converting list to DataFrame, list length: {len(data)}")
+                logger.info(f"Converting list to DataFrame, "
+                            f"list length: {len(data)}")
                 data = pd.DataFrame(data)
-                
+
             logger.info(f"DataFrame shape: {data.shape}")
             self.mongo.save_dataframe(data)
             logger.info("Data successfully saved to MongoDB")
