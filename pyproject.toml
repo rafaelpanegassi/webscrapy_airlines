@@ -15,6 +15,7 @@ loguru = "^0.7.3"
 selenium = "^4.30.0"
 beautifulsoup4 = "^4.13.3"
 lxml = "^5.3.1"
+pandas = "^2.2.3"
 
 
 [build-system]
