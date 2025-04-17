@@ -17,7 +17,7 @@ class MongoConnection:
         return cls._instance
 
     def __init__(self, host='localhost', port=27017,
-                 database='test', collection='data'):
+                 database='crawler_airlines', collection='airlines_data'):
         if self._client is None:
             self.host = os.getenv("MONGO_HOST", host)
             self.port = os.getenv("MONGO_PORT", port)
