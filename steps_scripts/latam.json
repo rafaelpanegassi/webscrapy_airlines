@@ -28,10 +28,10 @@
                 "tag": ".//li[@class='bodyFlightsstyle__ListItemAvailableFlights-sc__sc-1g00tx2-5 ciAabv']",
                 "elements": {
                     "decolagem": {
-                        "tag": ".//div[@class='flightInfostyle__ContainerFlightInfo-sc__sc-169zitd-3 fybJPx flight-information']"
+                        "tag": ".//div[@class='flightInfostyles__ContainerFlightInfo-sc__sc-edlvrg-3 frOWQZ flight-information']"
                     },
                     "aterrissagem": {
-                        "tag": ".//div[@class='flightInfostyle__ContainerFlightInfo-sc__sc-169zitd-3 fybJPx flight-information']"
+                        "tag": ".//div[@class='flightInfostyles__ContainerFlightInfo-sc__sc-edlvrg-3 frOWQZ flight-information']"
                     },
                     "duracao": {
                         "tag": ".//span[@class='sc-aXZVg iBheDR latam-typography latam-typography--paragraph-medium sc-gEvEer fteAEG']"
@@ -40,7 +40,7 @@
                         "tag": ".//span[@class='sc-aXZVg kFMrxo latam-typography latam-typography--heading-06 sc-gEvEer displayCurrencystyle__CurrencyAmount-sc__sc-hel5vp-2 fteAEG koxMWe']"
                     },
                     "escalas": {
-                        "tag": ".//a[@class='sc-jlZhew eFWdsA sc-cwHptR dtpzom']"
+                        "tag": ".//a[@class='sc-bXCLTC Bppkv sc-jsJBEP kwVdvg']"
                     }
                 }
             }
