@@ -38,5 +38,8 @@ class BrowserProvider:
             "--ignore-certificate-errors",
             "--disable-features=site-per-process",
             "--incognito",
-            "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+            "--disable-blink-features=AutomationControlled",  # Hide automation
+            "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "--disable-infobars",  # Disable automation info bars
+            "--window-size=1920,1080"  # Set a standard window size
         ]
