@@ -1,46 +1,63 @@
 {
-    "link": "https://www.latamairlines.com/br/pt",
+    "description": "Configuration for LATAM Airlines Brazil Web Crawler",
     "script": {
-        "before": {},
-        "main": {
-            "step-1": {
+        "before": {
+            "step-b1-navigate-home": {
                 "action": "goto",
-                "att": "https://www.latamairlines.com/br/pt/oferta-voos?origin={{origin}}&inbound={{return_date}}T12%3A00%3A00.000Z&outbound={{departure_date}}T12%3A00%3A00.000Z&destination={{destiny}}&adt=1&chd=0&inf=0&trip=RT&cabin=Economy&redemption=false&sort=RECOMMENDED"
+                "att": "https://www.latamairlines.com/br/pt"
             },
-            "step-2": {
-                "action": "click_button",
+            "step-b2-accept-cookies": {
+                "action": "click_element",
                 "att": {
-                    "element": "//button[@ id='cookies-politics-button']",
-                    "value": ""
+                    "element": "//button[@id='cookies-politics-button']"
                 }
             },
-            "step-3": {
+            "step-b3-wait-after-cookies": {
                 "action": "wait",
-                "att": 5
+                "att": 3
+            }
+        },
+        "main": {
+            "step-m1-search-flights": {
+                "action": "goto",
+                "att": "https://www.latamairlines.com/br/pt/oferta-voos?origin={{origin}}&destination={{destination}}&outbound={{departure_date}}T00%3A00%3A00.000Z&inbound={{return_date}}T00%3A00%3A00.000Z&adt=1&chd=0&inf=0&trip=RT&cabin=Economy&redemption=false&sort=RECOMMENDED"
+            },
+            "step-m2-wait-for-results": {
+                "action": "wait",
+                "att": 10
             }
         },
         "after": {}
     },
     "tag": {
         "result_group": {
-            "tag": "//ol[@aria-label='Voos disponíveis.']",
+            "tag": "//ol[@aria-label='Voos disponíveis.']/li[contains(@class, 'ListItemAvailableFlights') or contains(@class,'bodyFlightsstyle__ListItemAvailableFlights')]",
             "items": {
-                "tag": ".//li[@class='bodyFlightsstyle__ListItemAvailableFlights-sc__sc-1g00tx2-5 ciAabv']",
+                "tag": ".",
                 "elements": {
-                    "decolagem": {
-                        "tag": ".//div[@class='flightInfostyles__ContainerFlightInfo-sc__sc-edlvrg-3 frOWQZ flight-information']"
+                    "airline_logo_alt": {
+                        "tag": ".//div[contains(@class, 'CarrierLogoComponent') or contains(@class, 'carrierlogostyles__CarrierLogo')]//img/@alt"
                     },
-                    "aterrissagem": {
-                        "tag": ".//div[@class='flightInfostyles__ContainerFlightInfo-sc__sc-edlvrg-3 frOWQZ flight-information']"
+                    "departure_time": {
+                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[1]//time/text()"
                     },
-                    "duracao": {
-                        "tag": ".//span[@class='sc-aXZVg iBheDR latam-typography latam-typography--paragraph-medium sc-gEvEer fteAEG']"
+                    "departure_airport_code": {
+                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[1]//abbr[contains(@class, 'iataCode') or contains(@class, 'IATACode')]/text()"
                     },
-                    "preço": {
-                        "tag": ".//span[@class='sc-aXZVg kFMrxo latam-typography latam-typography--heading-06 sc-gEvEer displayCurrencystyle__CurrencyAmount-sc__sc-hel5vp-2 fteAEG koxMWe']"
+                    "arrival_time": {
+                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[2]//time/text()"
                     },
-                    "escalas": {
-                        "tag": ".//a[@class='sc-bXCLTC Bppkv sc-jsJBEP kwVdvg']"
+                    "arrival_airport_code": {
+                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[2]//abbr[contains(@class, 'iataCode') or contains(@class, 'IATACode')]/text()"
+                    },
+                    "duration": {
+                        "tag": ".//span[contains(@class, 'flightDuration') or (contains(@class, 'latam-typography') and (contains(., 'h') or contains(., 'm')))]/text()"
+                    },
+                    "stops_info": {
+                        "tag": ".//a[contains(@class, 'stopsButton') or contains(@class, 'sc-jsJBEP')]//span/text()"
+                    },
+                    "flight_price": {
+                        "tag": "(.//span[contains(@class, 'Price vanligtyle__PriceAmount') or contains(@class, 'displayCurrencystyle__CurrencyAmount')])[1]/text()"
                     }
                 }
             }
