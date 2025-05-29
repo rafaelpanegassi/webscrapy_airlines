@@ -31,33 +31,33 @@
     },
     "tag": {
         "result_group": {
-            "tag": "//ol[@aria-label='Voos disponíveis.']/li[contains(@class, 'ListItemAvailableFlights') or contains(@class,'bodyFlightsstyle__ListItemAvailableFlights')]",
+            "tag": "//li[contains(@class, 'bodyFlightsstyle__ListItemAvailableFlights-sc')]",
             "items": {
                 "tag": ".",
                 "elements": {
-                    "airline_logo_alt": {
-                        "tag": ".//div[contains(@class, 'CarrierLogoComponent') or contains(@class, 'carrierlogostyles__CarrierLogo')]//img/@alt"
+                    "airline_name": {
+                        "tag": ".//div[contains(@class, 'flightOperatorsstyles__OperatorName')]/text()"
                     },
                     "departure_time": {
-                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[1]//time/text()"
+                        "tag": "(.//div[contains(@class, 'flight-information')])[1]//span[contains(@class, 'flightInfostyles__TextHourFlight')]/text()"
                     },
                     "departure_airport_code": {
-                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[1]//abbr[contains(@class, 'iataCode') or contains(@class, 'IATACode')]/text()"
+                        "tag": "(.//div[contains(@class, 'flight-information')])[1]//span[contains(@class, 'flightInfostyles__TextIATA')]/text()"
                     },
                     "arrival_time": {
-                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[2]//time/text()"
+                        "tag": "(.//div[contains(@class, 'flight-information')])[2]//span[contains(@class, 'flightInfostyles__TextHourFlight')]/text()"
                     },
                     "arrival_airport_code": {
-                        "tag": "(.//div[contains(@class, 'flightInfostyles__ContainerFlightInfo') or contains(@class, 'flight-information')])[2]//abbr[contains(@class, 'iataCode') or contains(@class, 'IATACode')]/text()"
+                        "tag": "(.//div[contains(@class, 'flight-information')])[2]//span[contains(@class, 'flightInfostyles__TextIATA')]/text()"
                     },
                     "duration": {
-                        "tag": ".//span[contains(@class, 'flightDuration') or (contains(@class, 'latam-typography') and (contains(., 'h') or contains(., 'm')))]/text()"
+                        "tag": ".//span[contains(@class, 'flightInfostyles__Duration-sc')]/text()"
                     },
                     "stops_info": {
-                        "tag": ".//a[contains(@class, 'stopsButton') or contains(@class, 'sc-jsJBEP')]//span/text()"
+                        "tag": ".//a[contains(@class, 'sc-jsJBEP')]//span/text()"
                     },
                     "flight_price": {
-                        "tag": "(.//span[contains(@class, 'Price vanligtyle__PriceAmount') or contains(@class, 'displayCurrencystyle__CurrencyAmount')])[1]/text()"
+                        "tag": "(.//div[contains(@class, 'displayCurrencystyle__TextAmount-sc')])[1]//span/text()"
                     }
                 }
             }
